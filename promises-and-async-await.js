@@ -9,7 +9,7 @@ const simulateApi = () => (
 );
 
 const learnJavaScript = () => {
-	const learned = true;
+	const learned = true
 	return new Promise((resolve, reject) => 
 		learned 
 			? resolve("I'm an expert in JavaScript") 
@@ -21,8 +21,8 @@ const learnNode = (jsStatus) => {
 	const learned = true;
 	return new Promise((resolve, reject) =>
 		learned 
-			?	resolve(`${jsStatus}\nI'm an expert in Node`)
-			: reject(`${jsStatus}\nI'm an novice in Node`)
+			?	resolve(`${jsStatus}\nI'm also an expert in Node`)
+			: reject(`${jsStatus}\nI'm also an novice in Node`)
 	);
 };
 
@@ -30,33 +30,26 @@ const learnReact = (nodeStatus) => {
 	const learned = true;
 	return new Promise((resolve, reject) => 
 		learned
-			? resolve(`${nodeStatus}\nI'm an expert in React`)
-			: reject(`${nodeStatus}\nI'm an novice in React`)
+			? resolve(`${nodeStatus}\nI'm also an expert in React`)
+			: reject(`${nodeStatus}\nI'm also an novice in React`)
 	);
 };
 
-
-/* Calling one after the other */
-/*
 const getStatus = () => {
 	let status;
 	learnJavaScript()
 		.then(jsStatus => learnNode(jsStatus))
 		.then(nodeStatus => learnReact(nodeStatus))
 		.then(reactStatus => status = reactStatus)
-		.catch(err => status = err)
+		.catch(err => console.error(err))
 		.finally(() => console.log(status));
 };
-*/
 
 /*
 const getStatus = async () => {
 	let status;
 	try {
-		const jsStatus = await learnJavaScript();
-		const nodeStatus = await learnNode(jsStatus);
-		const reactStatus = await learnReact(nodeStatus)
-		status = reactStatus;
+		status = await learnJavaScript();
 	} catch (err) {
 		status = err;
 	} finally {
@@ -64,13 +57,5 @@ const getStatus = async () => {
 	}
 };
 */
-
-/*Promise.all*/
-const getStatus = () => {
-	let status;
-	Promise.all([learnJavaScript(), learnNode(), learnReact()])
-		.then(results => console.log(results))
-		.catch(err => console.error(err));
-}
 
 getStatus();
