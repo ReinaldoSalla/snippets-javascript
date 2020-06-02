@@ -12,8 +12,8 @@ const learnJavaScript = () => {
 	const learned = true;
 	return new Promise((resolve, reject) => 
 		learned 
-			? resolve("I'm an expert in JavaScript") 
-			: reject("I'm an novice in JavaScript")
+			? resolve("I am an expert in JavaScript") 
+			: reject("I am an novice in JavaScript\nNeed to study")
 	);
 };
 
@@ -21,8 +21,8 @@ const learnNode = (jsStatus) => {
 	const learned = true;
 	return new Promise((resolve, reject) =>
 		learned 
-			?	resolve(`${jsStatus}\nI'm an expert in Node`)
-			: reject(`${jsStatus}\nI'm an novice in Node`)
+			?	resolve(`${jsStatus}\nI am an expert in Node`)
+			: reject(`${jsStatus}\nI am an novice in Node\nNeed to study`)
 	);
 };
 
@@ -30,13 +30,11 @@ const learnReact = (nodeStatus) => {
 	const learned = true;
 	return new Promise((resolve, reject) => 
 		learned
-			? resolve(`${nodeStatus}\nI'm an expert in React`)
-			: reject(`${nodeStatus}\nI'm an novice in React`)
+			? resolve(`${nodeStatus}\nI am an expert in React`)
+			: reject(`${nodeStatus}\nI am an novice in React. Need to study`)
 	);
 };
 
-
-/* Calling one after the other */
 /*
 const getStatus = () => {
 	let status;
@@ -49,7 +47,6 @@ const getStatus = () => {
 };
 */
 
-/*
 const getStatus = async () => {
 	let status;
 	try {
@@ -60,17 +57,8 @@ const getStatus = async () => {
 	} catch (err) {
 		status = err;
 	} finally {
-		console.log(`I am ${status}`);
+		console.log(`${status}`);
 	}
 };
-*/
-
-/*Promise.all*/
-const getStatus = () => {
-	let status;
-	Promise.all([learnJavaScript(), learnNode(), learnReact()])
-		.then(results => console.log(results))
-		.catch(err => console.error(err));
-}
 
 getStatus();
