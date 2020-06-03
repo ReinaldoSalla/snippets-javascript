@@ -21,20 +21,32 @@ const learnNode = (jsStatus) => {
 };
 
 const learnReact = (nodeStatus) => {
-	const learned = false;
+	const learned = true;
 	return new Promise((resolve, reject) => 
 		learned
 			? resolve(`I am an expert in React`)
 			: reject(`I am an novice in React\nNeed to study`)
 	);
 };
-
+/*
 const getStatus = () => {
 	Promise.all([learnJavaScript(), learnNode(), learnReact()])
 		.then(results => {
 			results.forEach(result => console.log(result));
 		})
 		.catch(err => console.error(err));
+}
+*/
+
+const getStatus = async () => {
+	let status;
+	try {
+		status = await Promise.all([learnJavaScript(), learnNode(), learnReact()]);
+	} catch (err) {
+		status = err;
+	} finally {
+		status.forEach(item => console.log(item));
+	}
 }
 
 getStatus();

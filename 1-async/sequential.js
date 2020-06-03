@@ -1,9 +1,3 @@
-/*
-1-multiple ones, one depending on the other
-3-Promise.all
-4-Promise.allSettled
-*/
-
 const simulateApi = () => (
 	Math.random() > 0.5 ? true : false	
 );
@@ -17,7 +11,7 @@ const learnJavaScript = () => {
 	);
 };
 
-const learnNode = (jsStatus) => {
+const learnNode = jsStatus => {
 	const learned = true;
 	return new Promise((resolve, reject) =>
 		learned 
@@ -26,7 +20,7 @@ const learnNode = (jsStatus) => {
 	);
 };
 
-const learnReact = (nodeStatus) => {
+const learnReact = nodeStatus => {
 	const learned = true;
 	return new Promise((resolve, reject) => 
 		learned
